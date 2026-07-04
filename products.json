@@ -1,0 +1,93 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "product_name": "смартфоны",
+        "product_description": "мобильные устройства с сенсорным экраном, сочетающие функции телефона и инструмента для фото и видео, работы с приложениями",
+        "picture": "",
+        "category": 5,
+        "purchase_price": 10000,
+        "created_ad": "2026-07-03T21:35:48.751Z",
+        "updated_ad": "2026-07-03T21:35:48.751Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "product_name": "видеорегистраторы",
+        "product_description": "устройства для видео- и аудиофиксации обстановки вокруг автомобиля во время движения или стоянки, а также внутри салона",
+        "picture": "",
+        "category": 5,
+        "purchase_price": 3000,
+        "created_ad": "2026-07-03T21:41:44.199Z",
+        "updated_ad": "2026-07-03T21:41:44.199Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "product_name": "интерактивные игрушки",
+        "product_description": "игрушки, которые обладают особыми функциями, позволяющими им двигаться, разговаривать, подражать поведению животных",
+        "picture": "",
+        "category": 6,
+        "purchase_price": 3000,
+        "created_ad": "2026-07-03T21:44:11.723Z",
+        "updated_ad": "2026-07-03T21:44:11.723Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "product_name": "конструкторы",
+        "product_description": "наборы стандартных деталей, из которых можно собирать различные модели, сооружения или механизмы",
+        "picture": "",
+        "category": 6,
+        "purchase_price": 3500,
+        "created_ad": "2026-07-03T21:46:24.504Z",
+        "updated_ad": "2026-07-03T22:20:00.458Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "product_name": "бескаркасная мебель",
+        "product_description": " предметы интерьера без жесткой основы",
+        "picture": "",
+        "category": 7,
+        "purchase_price": 4500,
+        "created_ad": "2026-07-03T21:49:17.973Z",
+        "updated_ad": "2026-07-03T21:49:17.973Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "product_name": "веера",
+        "product_description": "ручное приспособление, обычно складное, которое создает поток воздуха, чтобы обмахиваться и освежаться",
+        "picture": "",
+        "category": 8,
+        "purchase_price": 2500,
+        "created_ad": "2026-07-03T21:55:36.665Z",
+        "updated_ad": "2026-07-03T21:55:36.665Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+        "product_name": "зонты",
+        "product_description": "ручное приспособление, обычно складное, которое помогает укрыться от дождя или палящих солнечных лучей",
+        "picture": "",
+        "category": 8,
+        "purchase_price": 2800,
+        "created_ad": "2026-07-03T21:56:45.885Z",
+        "updated_ad": "2026-07-03T21:56:45.885Z"
+    }
+}
+]
