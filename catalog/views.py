@@ -5,7 +5,7 @@ from catalog.models import Product
 def home(request):
     five_products = Product.objects.order_by('created_ad')[:5]
     print(five_products)
-    return render(request, 'catalog/home.html')
+    return render(request, 'catalog/home_2.html')
 
 def contacts(request):
     if request.method == "POST":
@@ -14,4 +14,9 @@ def contacts(request):
         message = request.POST.get("message")
         return HttpResponse (f"Спасибо {name}, ваш номер {phone} зарегистрирован!")
     return render(request, 'catalog/contacts.html')
+
+def product_detail(request):
+    product = Product.objects.get(id = 1)
+    context = {'product': product}
+    return render (request, 'catalog/product_detail.html', context)
 
