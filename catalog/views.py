@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from catalog.models import Product
 
 def home(request):
-    five_products = Product.objects.order_by('created_ad')[:5]
-    print(five_products)
-    return render(request, 'catalog/home_2.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'catalog/home_2.html', context)
 
 def contacts(request):
     if request.method == "POST":
@@ -20,3 +20,6 @@ def product_detail(request):
     context = {'product': product}
     return render (request, 'catalog/product_detail.html', context)
 
+# def product_list(request):
+#
+#     return rende
