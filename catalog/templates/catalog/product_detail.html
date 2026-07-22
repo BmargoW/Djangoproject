@@ -1,0 +1,21 @@
+{% extends 'catalog/home_2.html' %}
+
+{% block title %}Информация о товарах{% endblock %}
+{% block navigation %}
+<h5 class="my-0 mr-md-auto font-weight-normal">Описание товаров</h5>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-outline-primary" href="/catalog/home_2">Главная</a>
+            <a class="p-2 btn btn-outline-primary" href="/catalog/contacts/">Контакты</a>
+        </nav>
+{% endblock  %}
+
+{% block content %}
+
+<h2>Характерстики товара</h2>
+<p>Наименование: {{ product.product_name }}</p>
+<p>Описание: {{ product.product_description }}</p>
+<p>Изображение: <img src = "{{catalog.picture.url}}" alt = "{{product.product_name}}"></p>
+<p>Категория: {{ product.category }}</p>
+<p>Цена: {{ product.purchase_price }}</p>
+
+{% endblock  %}
