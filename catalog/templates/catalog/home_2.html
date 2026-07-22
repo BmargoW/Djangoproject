@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Главная{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        {% block navigation %}
+        <h5 class="my-0 mr-md-auto font-weight-normal">Главная</h5>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-outline-primary" href="/catalog/product_detail">Описание товаров</a>
+            <a class="p-2 btn btn-outline-primary" href="/catalog/contacts/">Контакты</a>
+        </nav>
+        {% endblock %}
+    </div>
+
+    <div class="container mt-5">
+        {% block content %}
+        <h2>Список товаров</h2>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item d-flex justify-content-between align-items-center {% if product.category_id == 5 %}list-group-item-primary{% elif product.category_id == 6 %}list-group-item-success{% elif product.category_id == 7 %}list-group-item-warning{% elif product.category_id == 8 %}list-group-item-danger{% elif product.category_id == 13 %}list-group-item-info{% endif %}">
+                  {{ product.product_name | upper }}: {{ product.product_description | truncatechars:100}}
+                  <span class="badge text-bg-info badge-primary badge-pill">
+                        {% if product.category_id == 5 %}
+                            Электроника
+                        {% elif product.category_id == 6 %}
+                            Игрушки
+                        {% elif product.category_id == 7 %}
+                            Мебель
+                        {% elif product.category_id == 8 %}
+                            Аксессуары
+                        {% elif product.category_id == 13 %}
+                            Техника
+                        {% endif %}
+                  </span>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+        {% include 'catalog/information.html' %}
+    </div>
+
+<!-- Подключение Bootstrap JS -->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
