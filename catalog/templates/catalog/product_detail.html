@@ -4,8 +4,8 @@
 {% block navigation %}
 <h5 class="my-0 mr-md-auto font-weight-normal">Описание товаров</h5>
         <nav class="ms-5">
-            <a class="p-2 btn btn-outline-primary" href="/catalog/home_2">Главная</a>
-            <a class="p-2 btn btn-outline-primary" href="/catalog/contacts/">Контакты</a>
+            <a href="{% url 'catalogs:home_2' %}" class="btn btn-secondary">Главная</a>
+
         </nav>
 {% endblock  %}
 
@@ -14,7 +14,7 @@
 <h2>Характерстики товара</h2>
 <p>Наименование: {{ product.product_name }}</p>
 <p>Описание: {{ product.product_description }}</p>
-<p>Изображение: <img src = "{{catalog.picture.url}}" alt = "{{product.product_name}}"></p>
+<p>Изображение: <img src = "{{product.picture.url}}" alt = "{{product.product_name}}"></p>
 <p>Категория: {{ product.category }}</p>
 <p>Цена: {{ product.purchase_price }}</p>
 
