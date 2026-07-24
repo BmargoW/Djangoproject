@@ -5,13 +5,20 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">{{ blog.title }}</h1>
-        <p>{{ blog.content}}</p>
-        <p>Создано: {{ blog.creation_date }}</p>
-        <a href="{% url 'blog:blog_update' blog.pk %}" class="btn btn-secondary">Редактировать</a>
-        <a href="{% url 'blog:blog_delete' blog.pk %}" class="btn btn-danger">Удалить</a>
-        <a href="{% url 'blog:blog_list' %}" class="btn btn-primary">Вернуться к списку</a>
+    <div class="card shadow-sm">
+        <img src="{{blog.preview}}">
+            <div class="card-body">
+                <p class="card_text">{{ blog.title }}</p>
+                <p class="card-text">{{ blog.content}}</p>
+                <p class="card-text">Создано: {{ blog.creation_date }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                       <a href="{% url 'blog:blog_update' blog.pk %}" class="btn btn-secondary">Редактировать</a>
+                       <a href="{% url 'blog:blog_delete' blog.pk %}" class="btn btn-danger">Удалить</a>
+                       <a href="{% url 'blog:blog_list' %}" class="btn btn-primary">Вернуться к списку</a>
+                    </div>
+                </div>
+            </div>
     </div>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>

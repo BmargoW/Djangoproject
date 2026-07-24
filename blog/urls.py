@@ -10,16 +10,16 @@ from blog.views import (
 app_name = "blog"
 
 urlpatterns = [
-    path("blogentry/", BlogEntryCreateView.as_view(), name="blog_greate"),
-    path("blogentry_list/", BlogEntryListView.as_view(), name="blog_list"),
+    path("blog/", BlogEntryCreateView.as_view(), name="blog_greate"),
+    path("blog/list/", BlogEntryListView.as_view(), name="blog_list"),
     path(
-        "blogentry_detail/<int:pk>/", BlogEntryDetailView.as_view(), name="blog_detail"
+        "blog/detail/<int:pk>/", BlogEntryDetailView.as_view(), name="blog_detail"
     ),
     path(
-        "blogentry_delete/<int:pk>/", BlogEntryDeleteView.as_view(), name="blog_delete"
+        "blog/delete/<int:pk>/", BlogEntryDeleteView.as_view(), name="blog_delete"
     ),
     path(
-        "blogentry_update/<int:pk>/", BlogEntryUpdateView.as_view(), name="blog_update"
+        "blog/update/<int:pk>/", BlogEntryUpdateView.as_view(), name="blog_update"
     ),
-    # path('product_detail/', views.product_detail, name = 'product_detail')
+
 ]
