@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список объектов Blog</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Список объектов Blog</h1>
+
+        <ul class="list-group">
+            {% for element in blog %}
+                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
+                    <a href="{% url 'blog:blog_detail' element.pk %}"> {{element.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'blog:blog_greate' %}" class="btn btn-secondary">Создать новую статью</a>
+    </div>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

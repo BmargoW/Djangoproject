@@ -1,25 +1,27 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from catalog.models import Product
 
-def home(request):
-    products = Product.objects.all()
-    context = {'products': products}
-    return render(request, 'catalog/home_2.html', context)
+from django.views.generic import ListView, DetailView, TemplateView
+from django.urls import reverse_lazy
 
-def contacts(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        message = request.POST.get("message")
-        return HttpResponse (f"Спасибо {name}, ваш номер {phone} зарегистрирован!")
-    return render(request, 'catalog/contacts.html')
 
-def product_detail(request):
-    product = Product.objects.get(id = 1)
-    context = {'product': product}
-    return render (request, 'catalog/product_detail.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = "catalog/home_2.html"
+    context_object_name = "product"
 
-# def product_list(request):
-#
-#     return rende
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = "catalog/product_detail.html"
+    context_object_name = "product"
+    success_url = reverse_lazy("catalogs:home_2")
+
+
+class ContactView(TemplateView):
+    name = "name"
+    phone = "phone"
+    message = "message"
+    template_name = "catalog/contacts.html"
+
+
+# return HttpResponse (f"Спасибо {name}, ваш номер {phone} зарегистрирован!")
