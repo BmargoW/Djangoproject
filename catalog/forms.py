@@ -1,4 +1,8 @@
+from itertools import product
+
 from django import forms
+from django.core.exceptions import ValidationError
+
 from .models import Product
 
 class ProductForm(forms.ModelForm):
@@ -43,10 +47,23 @@ class ProductForm(forms.ModelForm):
                     self.add_error('product_name', f'не может содержать слово "{word}"')
 
         return cleaned_data
-# крипта
-# биржа,
-# дешево,
-# бесплатно,
-# обман,
-# полиция,
-# радар.')
+
+    def clean_price(self):
+        purchase_price = self.cleaned_data.get('purchase_price')
+        if purchase_price <= 0:
+            raise ValidationError("Стоимость не должна быть отрицательной")
+        return purchase_price
+
+
+
+    def clean_picture(self):
+        picture = self.cleaned_data.get('picture')
+        if picture.size > 50 * 5000 * 4000:
+            raise ValidationError("Файл должен быть не больше 50 МБ")
+
+        valid_extensions = ['jpg', 'png']
+        if picture.name.lower().split('.')[-1] not in valid_extensions:
+            raise ValidationError(f"Неподдерживаемый формат файла. Поддерживаемые форматы: {valid_extensions}")
+        return picture
+
+
