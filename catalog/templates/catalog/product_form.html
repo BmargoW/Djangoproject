@@ -1,0 +1,24 @@
+{% extends 'catalog/home_2.html' %}
+
+{% block title %}Создать товар{% endblock %}
+{% block navigation %}
+<h5 class="my-0 mr-md-auto font-weight-normal">Форма для создания или изменения товаров</h5>
+        <nav class="ms-5">
+            <a href="{% url 'catalogs:home_2' %}" class="btn btn-secondary">Главная</a>
+
+        </nav>
+{% endblock  %}
+
+{% block content %}
+
+<form method="post">
+            {% csrf_token %}
+            {{form.non_field_errors}}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="{% url 'catalogs:home_2' %}" class="btn btn-secondary">Вернуться к списку</a>
+</form>
+
+
+
+{% endblock  %}
