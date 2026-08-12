@@ -12,8 +12,16 @@
         {% block navigation %}
         <h5 class="my-0 mr-md-auto font-weight-normal">Главная</h5>
         <nav class="ms-5">
-            <a href="{% url 'catalogs:home_2' %}" class="btn btn-secondary">Главная</a>
             <a href="{% url 'catalogs:product_form' %}" class="btn btn-secondary">Добавить продукт</a>
+           {% if user.is_authenticated %}
+                <form method="post" action="{% url 'users:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">Выход</button>
+                </form>
+                {% else %}
+                <a href="{% url 'users:login' %}" class="btn btn-secondary">Вход</a>
+           {% endif %}
+
         </nav>
         {% endblock %}
     </div>

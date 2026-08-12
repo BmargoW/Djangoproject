@@ -1,15 +1,17 @@
-from django.contrib.auth.forms import UserCreationForm,  AuthenticationForm
-from .models import CustomUser
+from django.urls import reverse_lazy
 
-class CustomUserCreationForm(UserCreationForm):
+from django.views.generic import FormView
 
-    class Meta(UserCreationForm.Meta):
-        model = CustomUser
-        fields = "all"
+from .forms import UserRegisterForm
+from users.models import CustomUser
+
+class RegisterView(FormView):
+    model = CustomUser
+    form_class = UserRegisterForm
+    template_name = 'users/register.html'
+    success_url = reverse_lazy('catalogs:home_2')
 
 
-class CustomAuthenticationForm(AuthenticationForm):
-    pass
 
 
 
