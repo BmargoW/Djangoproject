@@ -1,17 +1,17 @@
 from catalog.models import Product
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .forms import ProductForm
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin,CreateView):
     model = Product
     form_class = ProductForm
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalogs:home_2")
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = "catalog/product_form.html"
@@ -37,4 +37,3 @@ class ContactView(TemplateView):
     template_name = "catalog/contacts.html"
 
 
-# return HttpResponse (f"Спасибо {name}, ваш номер {phone} зарегистрирован!")
