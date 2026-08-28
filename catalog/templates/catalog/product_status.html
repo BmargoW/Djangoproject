@@ -1,0 +1,29 @@
+{% extends 'catalog/home_2.html' %}
+
+{% block title %}Статус{% endblock %}
+{% block navigation %}
+<h5 class="my-0 mr-md-auto font-weight-normal">Изменение статуса товара или его удаление</h5>
+        <nav class="ms-5">
+            <a href="{% url 'catalogs:home_2' %}" class="btn btn-secondary">Главная</a>
+
+        </nav>
+{% endblock  %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{form.non_field_errors}}
+            <p>{{ product.product_name }}</p>
+            <select class="form-select-mb-5" name="status" aria-label="Default select example">
+              <option selected>Выберите статус {{ product.product_name }} </option>
+              <option value="published">published</option>
+              <option value="not_published">not_published</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+
+</form>
+
+<a href="{% url 'catalogs:product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
+{% endblock  %}

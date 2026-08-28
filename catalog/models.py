@@ -14,6 +14,7 @@ class Category(models.Model):
         ordering = ["title_name"]
 
 
+
 class Product(models.Model):
     STATUS_CHOICES = [('published', 'опубликован'), ('not_published', 'не опубликован'), ]
 
@@ -38,3 +39,4 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["product_name"]
+        permissions = [("can_unpublish_product", "Can unpublish product"),]
