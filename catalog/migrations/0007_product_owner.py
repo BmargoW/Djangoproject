@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             model_name="product",
             name="owner",
             field=models.ForeignKey(
-                default= 1,
+                default=1,
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="owners",
                 to=settings.AUTH_USER_MODEL,

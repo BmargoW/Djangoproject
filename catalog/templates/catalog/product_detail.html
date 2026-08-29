@@ -20,10 +20,11 @@
 <p>Публикация: {{ product.status_publications}}
 
 </p>
-{% if perms.catalog.can_unpublish_product %}
- <button type="submit" class="btn btn-primary">Сохранить</button>
 
- <a href="{% url 'catalogs:product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
+<button type="submit" class="btn btn-primary">Сохранить</button>
+
+{% if perms.catalog.can_unpublish_product %}
+
  <a href="{% url 'catalogs:product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
 
 <form method="post" action="{% url 'catalogs:change_status' product.pk %}">
@@ -31,4 +32,10 @@
             <button type="submit">Изменить статус</button>
 </form>
 {% endif %}
+
+{% if user == product.owner %}
+ <a href="{% url 'catalogs:product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
+ <a href="{% url 'catalogs:product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
+{% endif %}
+
 {% endblock  %}
