@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import CustomUser
+
 
 class Category(models.Model):
     title_name = models.CharField(max_length=150, verbose_name="Наименование")
@@ -31,6 +33,12 @@ class Product(models.Model):
     created_ad = models.DateTimeField(auto_now_add=True)
     updated_ad = models.DateTimeField(auto_now=True)
     status_publications = models.CharField(max_length=30, choices=STATUS_CHOICES, default = 'not_published', verbose_name="Публикация")
+    owner = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name="owners",
+        verbose_name="Пользователь",
+    )
 
     def __str__(self):
         return self.product_name

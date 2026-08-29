@@ -24,15 +24,13 @@ class ProductForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({
             'class': 'form-control'
         })
-        # self.fields['product_name'].widget.attrs.update({
-        #     'class': 'form-control',
-        #     'placeholder': 'введите наименование продукта'
-        # })
+
 
     def clean(self):
         cleaned_data = super().clean()
         product_name = cleaned_data.get('product_name')
         product_description = cleaned_data.get('product_description')
+
         forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                            'радар']
 
