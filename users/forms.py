@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
-class UserRegisterForm(UserCreationForm):
+class  UserRegisterForm(UserCreationForm):
     phone_number = forms.CharField(max_length=15, required=False, help_text='Необязательное поле. Введите ваш номер телефона.')
 
     class Meta:

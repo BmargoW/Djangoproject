@@ -17,7 +17,25 @@
 <p>Изображение: <img src = "{{product.picture.url}}" alt = "{{product.product_name}}" width="200" height="150"></p>
 <p>Категория: {{ product.category }}</p>
 <p>Цена: {{ product.purchase_price }}</p>
+<p>Публикация: {{ product.status_publications}}
+
+</p>
+
 <button type="submit" class="btn btn-primary">Сохранить</button>
-<a href="{% url 'catalogs:product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
+
+{% if perms.catalog.can_unpublish_product %}
+
+ <a href="{% url 'catalogs:product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
+
+<form method="post" action="{% url 'catalogs:change_status' product.pk %}">
+            {% csrf_token %}
+            <button type="submit">Изменить статус</button>
+</form>
+{% endif %}
+
+{% if user == product.owner %}
+ <a href="{% url 'catalogs:product_update' product.pk %}" class="btn btn-warning">Редактировать</a>
+ <a href="{% url 'catalogs:product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
+{% endif %}
 
 {% endblock  %}

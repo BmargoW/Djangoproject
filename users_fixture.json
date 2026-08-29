@@ -1,0 +1,74 @@
+[
+{
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$kuVoQ0f6Bxb686w3wSZzGS$nh1Ca+SZZrPrgZy+g18PmtSw4Yh/ASEUjgGZ0ck5vcw=",
+        "last_login": "2026-08-21T22:31:02.676Z",
+        "is_superuser": true,
+        "username": "Rita",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-08-11T11:13:33.063Z",
+        "email": "bmargow@yandex.ru",
+        "phone_number": null,
+        "avatar": "",
+        "country": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$AEg47ZK1PjFw3CHdPmTSre$r668Irhpw6wWpCUvp6b/yOuUYRYGh2bu3z/7IcUExIo=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "Иван",
+        "last_name": "Иванов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-14T22:40:41Z",
+        "email": "bmargaritaw@gmail.com",
+        "phone_number": "9281108132",
+        "avatar": "",
+        "country": null,
+        "groups": [
+            1
+        ],
+        "user_permissions": [
+            29,
+            30,
+            31,
+            32
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+        "password": "1209qp\\",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Angel",
+        "first_name": "Ангел",
+        "last_name": "Ангелов",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-22T17:31:19Z",
+        "email": "loger_1@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "country": "Нидерланды",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+}
+]
