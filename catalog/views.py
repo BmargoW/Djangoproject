@@ -16,6 +16,8 @@ from .forms import ProductForm
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import redirect
 
+from .service import list_definition
+
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
@@ -52,6 +54,10 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         # возвращаем с изменениями
         return super().post(request, *status, **kwargs)
 
+def opening_of_categories(request, pk):
+    list_p = list_definition(category_id=pk)
+    context = {'list_p': list_p}
+    return render(request, 'catalog/product_list.html', context)
 
 def change_status_publications(request, pk):
     if request.method == "POST":
@@ -85,6 +91,16 @@ class ProductDetailView(DetailView):
     template_name = "catalog/product_detail.html"
     context_object_name = "product"
     success_url = reverse_lazy("catalogs:home_2")
+
+    def get_context_data(self, **kwargs):
+        # Получаем стандартный контекст данных из родительского класса
+        context = super().get_context_data(**kwargs)
+        # Получаем ID категории из объекта
+        category_id = self.object.category_id
+        # Добавляем в контекст средний рейтинг и статус популярности книги
+        context['category_id'] = category_id
+
+        return context
 
 
 class ProductDeleteView(DeleteView):
