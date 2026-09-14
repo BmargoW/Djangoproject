@@ -15,7 +15,8 @@
 <p>Наименование: {{ product.product_name }}</p>
 <p>Описание: {{ product.product_description }}</p>
 <p>Изображение: <img src = "{{product.picture.url}}" alt = "{{product.product_name}}" width="200" height="150"></p>
-<p>Категория: {{ product.category }}</p>
+<a href="{% url 'catalogs:product_list' category_id  %}" class="btn btn-success">Категория: {{ product.category }}</a>
+
 <p>Цена: {{ product.purchase_price }}</p>
 <p>Публикация: {{ product.status_publications}}
 
