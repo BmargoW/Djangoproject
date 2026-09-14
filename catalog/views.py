@@ -1,4 +1,8 @@
 from django.http import HttpResponseForbidden
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+
+from django.utils.decorators import method_decorator
 
 from catalog.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -54,10 +58,12 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         # возвращаем с изменениями
         return super().post(request, *status, **kwargs)
 
+
 def opening_of_categories(request, pk):
     list_p = list_definition(category_id=pk)
-    context = {'list_p': list_p}
-    return render(request, 'catalog/product_list.html', context)
+    context = {"list_p": list_p}
+    return render(request, "catalog/product_list.html", context)
+
 
 def change_status_publications(request, pk):
     if request.method == "POST":
@@ -85,7 +91,15 @@ class ProductListView(ListView):
     template_name = "catalog/home_2.html"
     context_object_name = "product"
 
+    def get_queryset(self):
+        queryset = cache.get("product_queryset")
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set("product_queryset", queryset, 60 * 5)
+        return queryset
 
+
+@method_decorator(cache_page(60 * 5), name="dispatch")
 class ProductDetailView(DetailView):
     model = Product
     template_name = "catalog/product_detail.html"
@@ -98,7 +112,7 @@ class ProductDetailView(DetailView):
         # Получаем ID категории из объекта
         category_id = self.object.category_id
         # Добавляем в контекст средний рейтинг и статус популярности книги
-        context['category_id'] = category_id
+        context["category_id"] = category_id
 
         return context
 
@@ -124,7 +138,6 @@ class ProductDeleteView(DeleteView):
             return HttpResponseForbidden("продукт удален")
         # сохраняем изменения
         return HttpResponseForbidden("У Вас нет прав на действие")
-
 
 
 class ContactView(TemplateView):

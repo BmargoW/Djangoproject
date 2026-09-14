@@ -29,7 +29,5 @@ urlpatterns = [
         views.change_status_publications,
         name="change_status",
     ),
-    path(
-        "product_list/<int:pk>/", views.opening_of_categories, name="product_list"
-    ),
+    path("product_list/<int:pk>/", views.opening_of_categories, name="product_list"),
 ]
